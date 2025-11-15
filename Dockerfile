@@ -44,7 +44,7 @@ RUN echo "deb http://mirrors.aliyun.com/debian/ bookworm main non-free non-free-
     && echo "deb http://mirrors.aliyun.com/debian/ bookworm-backports main non-free non-free-firmware contrib" >> /etc/apt/sources.list
 
 # 从构建阶段复制 Python 环境
-COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
+COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
 
 # 安装运行时依赖
