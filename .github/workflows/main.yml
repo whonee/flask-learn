@@ -1,12 +1,17 @@
+name: flask-learn
+
 on: push
+
 jobs:
-  job1:
+  run-app:
+    name: run flask app on ubuntu
     runs-on: ubuntu-latest
     steps:
+    - name: 读取仓库内容
+      uses: actions/checkout@v4
+    
+    - name: 安装依赖
     - run: pwd
     - run: ls
-  job2:
-    runs-on: windows-latest
-    steps:
-    - run: python --version
+    - run: uv sync
     
