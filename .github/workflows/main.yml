@@ -6,7 +6,7 @@ jobs:
     - run: pwd
     - run: ls
   job2:
-    runs-on: ubuntu-22.02
+    runs-on: windows-latest
     steps:
     - run: python --version
     
