@@ -17,6 +17,7 @@ wheels/
 
 # settings.json
 .settings.json
+.env
 
 instance/
 logs/
@@ -25,3 +26,4 @@ htmlcov/
 results.xml
 test-report.html
 *cache*
+.coverage
