@@ -1,0 +1,12 @@
+on: push
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+    - run: pwd
+    - run: ls
+  job2:
+    runs-on: ubuntu-22.02
+    steps:
+    - run: python --version
+    
