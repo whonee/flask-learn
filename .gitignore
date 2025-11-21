@@ -20,3 +20,8 @@ wheels/
 
 instance/
 logs/
+*demo*
+htmlcov/
+results.xml
+test-report.html
+*cache*
