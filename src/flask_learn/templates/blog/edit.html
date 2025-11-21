@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit{% endblock %}</h1>
+  
+{% endblock %}
+
+{% block content %}
+  {% include 'blog/create_or_edit.html' %}
+{% endblock %}

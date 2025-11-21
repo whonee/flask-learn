@@ -8,3 +8,15 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Docker files
+.DS_Store
+
+# vs code files
+.vscode/
+
+# settings.json
+.settings.json
+
+instance/
+logs/

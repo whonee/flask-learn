@@ -1,0 +1,19 @@
+{% if not g.user %}
+  <p>You must be logged in to create or edit a post.</p>
+{% else %}
+  <form method="post">
+    {% if request.path == url_for('blog.create') %}
+      <label for="title">Title</label>
+      <input name="title" id="title" value="{{ request.form['title'] }}" required>
+      <label for="body">Body</label>
+      <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
+      <input type="submit" value="Save">
+    {% else %}
+      <label for="title">Title</label>
+      <input name="title" id="title" value="{{ post['title'] }}" required>
+      <label for="body">Body</label>
+      <textarea name="body" id="body">{{ post['body'] }}</textarea>
+      <input type="submit" value="Update">
+    {% endif %}
+  </form>
+{% endif %}
