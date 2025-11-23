@@ -2,20 +2,38 @@ name: flask-learn
 
 on: push
 
+permissions:
+  contents: write
+
 jobs:
-  run-app:
-    name: run flask app on ubuntu
+  run-test:
+    name: run pytest on ubuntu
     runs-on: ubuntu-latest
     steps:
     - name: 读取仓库内容
       uses: actions/checkout@v4
-    
-    - name: 安装依赖
-      run: pwd
-      
-    - run: ls
-    - run: pip install .
 
-    - name: run test
+    - name: Setup Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.12'
+          
+    - name: 安装依赖
+      run: pip install .
+
+    - name: 运行测试
       run: python -m pytest
+
+    - name: 登录dockerhub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+    - name: build docker image
+      uses: docker/build-push-action@v5
+      with:
+        push: true
+        tags: ygg12138/whonee:latest
+
+        
     
