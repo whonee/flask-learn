@@ -26,11 +26,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # 复制依赖文件
-COPY requirements.txt ./
+COPY pyproject.toml ./
 
 # 安装依赖到系统级目录（不使用 --user）
-RUN pip install --upgrade pip && \
-    pip install -r requirements.txt
+RUN pip install --upgrade pip
+RUN pip install . 
+RUN pip install gunicorn
 
 # 第二阶段：运行环境
 FROM python:3.12-slim-bookworm AS runtime
@@ -74,4 +75,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
   CMD curl -f http://localhost:8080/ || exit 1
 
 # 使用 run.py 作为入口点
-CMD ["python", "main.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "4", "src.flask_learn:create_app()"]

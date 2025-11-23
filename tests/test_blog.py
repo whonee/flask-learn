@@ -45,4 +45,4 @@ def test_exists_required(client, auth, path, method):
         response = client.post(path)
     else:
         response = client.delete(path)
-    assert response.status_code == 403
+    assert response.status_code == 404
